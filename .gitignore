@@ -19,3 +19,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+# I have these available for the test post, but they're not used at the moment
+unused_pics/*
