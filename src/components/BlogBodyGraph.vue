@@ -12,15 +12,13 @@ export default {
   computed: {
     formattedMsg() {
       return this.rawMsg.replace(/\[\[(.*)\]\]/g, this.getFormatLink(this.links));
-    }
+    },
   },
   methods: {
-    getFormatLink: (links) => {
-      return (match, p1, offset, string) => {
-        let link = links[p1];
-        return `<a href="${link.href}">${link.title}</a>`;
-      }
-    }
-  }
+    getFormatLink: links => (match, p1, offset, string) => {
+      const link = links[p1];
+      return `<a href="${link.href}">${link.title}</a>`;
+    },
+  },
 };
 </script>
