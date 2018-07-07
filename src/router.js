@@ -5,7 +5,7 @@ import Blog from './views/Blog.vue';
 Vue.use(Router);
 
 // just for local development
-var localPostData = require('./mc_data.json');
+const localPostData = require('./mc_data.json');
 
 export default new Router({
   routes: [
@@ -14,7 +14,7 @@ export default new Router({
       name: 'blog',
       component: Blog,
       props: {
-        baseImgDir: "mc/",
+        baseImgDir: 'mc/',
         postContent: localPostData,
       },
     },

@@ -15,7 +15,7 @@ export default {
     },
   },
   methods: {
-    getFormatLink: links => (match, p1, offset, string) => {
+    getFormatLink: links => (_, p1) => {
       const link = links[p1];
       return `<a href="${link.href}">${link.title}</a>`;
     },

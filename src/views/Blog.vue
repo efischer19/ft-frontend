@@ -4,24 +4,29 @@
       <BlogTitle
         v-if="element.type === 'title'"
         v-bind:msg="element.msg"
+        :key="element.index"
       />
       <BlogBodyGraph
         v-else-if="element.type === 'p'"
         v-bind:rawMsg="element.rawMsg"
         v-bind:links="element.links"
+        :key="element.index"
       />
       <BlogImg
         v-else-if="element.type === 'img'"
         v-bind:baseFileLink="`${baseImgDir}${element.link}`"
         v-bind:altText="element.alt"
+        :key="element.index"
       />
       <BlogHeader
         v-else-if="element.type === 'header'"
         v-bind:msg="element.msg"
+        :key="element.index"
       />
       <BlogList
         v-else-if="element.type === 'list'"
         v-bind:items="element.items"
+        :key="element.index"
       />
     </template>
   </div>

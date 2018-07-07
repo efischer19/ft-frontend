@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     smallFileLink() {
-      return this.baseFileLink.replace(/(\.jpg)/, ".small$1");
+      return this.baseFileLink.replace(/(\.jpg)/, '.small$1');
     },
   },
 };
