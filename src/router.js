@@ -4,9 +4,6 @@ import Blog from './views/Blog.vue';
 
 Vue.use(Router);
 
-// just for local development
-const localPostData = require('./mc_data.json');
-
 export default new Router({
   routes: [
     {
@@ -15,7 +12,7 @@ export default new Router({
       component: Blog,
       props: {
         baseImgDir: 'mc/',
-        postContent: localPostData,
+        postContent: postData || '[{"index": 0,"type": "title","msg": "No Post Data Found"}]',
       },
     },
   ],
