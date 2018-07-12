@@ -5,36 +5,36 @@
 </template>
 
 <style>
+body {
+  background-color: #EEEEEE
+}
+
 #app {
-    margin:40px auto;
-    max-width:800px;
-    line-height:1.6;
-    font-size:18px;
-    color:#444;
-    padding:0 10px;
+  margin:40px auto;
+  max-width:800px;
+  line-height:1.6;
+  font-size:18px;
+  color:#444;
+  padding:0 10px;
 }
 
 h1,h2,h3 {
-    line-height:1.2;
+  line-height:1.2;
 }
 
 img {
-    width:100%;
-    height:auto;
+  width:100%;
+  height:auto;
 }
 
 .hidden {
-    position:absolute;
-    left:-10000px;
-    top:auto;
-}
-
-#nav {
-  padding: 30px;
+  position:absolute;
+  left:-10000px;
+  top:auto;
 }
 
 #nav a {
-  font-weight: bold;
+  line-height:1.2;
   color: #2c3e50;
 }
 

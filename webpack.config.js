@@ -1,8 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -10,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -18,36 +16,36 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          extractCSS: true
-        }
+          extractCSS: true,
+        },
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      }
-    ]
+          'css-loader',
+        ],
+      },
+    ],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, "./src")
-    }
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.[chunkhash].css'
-    })
+      filename: 'style.[chunkhash].css',
+    }),
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all'
-    }
-  }
+      chunks: 'all',
+    },
+  },
 };
