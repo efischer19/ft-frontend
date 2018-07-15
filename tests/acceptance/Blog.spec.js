@@ -1,28 +1,31 @@
-import { mount } from '@vue/test-utils';
 import { createRenderer } from 'vue-server-renderer';
+import Vue from 'vue';
+import mockAxios from 'jest-mock-axios';
 import Blog from '@/views/Blog.vue';
 
-const localPostData = require('@/mc_data.json');
+const mockResponseObj = require('./post_data.json');
 
 describe('Blog', () => {
   it('should match snapshot', () => {
-    const renderer = createRenderer();
-    const wrapper = mount(
-      Blog,
-      {
-        propsData: {
-          baseImgDir: 'mc/',
-          postContent: localPostData,
-        },
+    const Constructor = Vue.extend(Blog);
+    const vm = new Constructor({
+      propsData: {
+        id: 'mc',
       },
-    );
+    }).$mount();
 
-    renderer.renderToString(
-      wrapper.vm,
-      (err, str) => {
-        if (err) throw new Error(err);
-        expect(str).toMatchSnapshot();
-      },
-    );
+    expect(mockAxios.get).toHaveBeenCalledWith('/mc/post_data.json');
+    mockAxios.mockResponse({ data: mockResponseObj });
+
+    const renderer = createRenderer();
+    Vue.nextTick(() => {
+      renderer.renderToString(
+        vm,
+        (err, str) => {
+          if (err) throw new Error(err);
+          expect(str).toMatchSnapshot();
+        },
+      );
+    });
   });
 });
