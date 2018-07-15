@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should match snapshot 1`] = `
+<div id="nav">
+  <h2>Currently Available Posts</h2>
+  <ul>
+    <li>
+      <a href="#/posts/mc">
+        Mac and Cheese
+      </a>
+    </li>
+  </ul>
+</div>
+`;
