@@ -3,9 +3,16 @@
     <SignIn/>
     <h2>Currently Available Posts</h2>
     <ul>
-      <li v-for="post in posts" :key="post.path">
+      <li v-for="post in publicPosts" :key="post.path">
         <router-link
           :to="`posts/${post.path}`"
+        >
+          {{ post.title }}
+        </router-link>
+      </li>
+      <li v-for="post in privatePosts" :key="post.path">
+        <router-link
+          :to="`posts/_${post.path}`"
         >
           {{ post.title }}
         </router-link>
@@ -16,6 +23,7 @@
 
 <script>
 import axios from 'axios';
+import Cookie from 'js-cookie';
 import SignIn from '@/components/SignIn.vue';
 
 export default {
@@ -25,22 +33,31 @@ export default {
   },
   props: {
     postPaths: {
-      default: () => [{}],
+      default: () => [],
       type: Array,
     },
   },
   data() {
-    if (!this.posts) {
+    if (!this.publicPosts) {
       axios.get('/api/posts.json')
         .then(({ data }) => {
-          this.posts = data;
-        })
-        .catch(() => {
-          this.posts = [{}];
+          this.publicPosts = data;
         });
     }
+
+    if (!this.privatePosts) {
+      const authToken = Cookie.get('ft-auth-token');
+      if (authToken) {
+        console.log(authToken);
+        axios.get('/api/posts2.json') // same as public get for now; will eventually hit API Gateway instead
+          .then(({ data }) => {
+            this.privatePosts = data;
+          });
+      }
+    }
     return {
-      posts: this.postPaths,
+      publicPosts: this.postPaths,
+      privatePosts: this.postPaths,
     };
   },
 };

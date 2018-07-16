@@ -14,7 +14,7 @@
       />
       <BlogImg
         v-else-if="element.type === 'img'"
-        v-bind:baseFileLink="`/${id}/${element.link}`"
+        v-bind:baseFileLink="`/${resolvedId}/${element.link}`"
         v-bind:altText="element.alt"
         :key="element.index"
       />
@@ -34,6 +34,8 @@
 
 <script>
 import axios from 'axios';
+import Cookie from 'js-cookie';
+
 import BlogTitle from '@/components/BlogTitle.vue';
 import BlogBodyGraph from '@/components/BlogBodyGraph.vue';
 import BlogImg from '@/components/BlogImg.vue';
@@ -44,14 +46,32 @@ export default {
   name: 'blog',
   props: ['id'],
   data() {
+    let newId = this.id;
+    const isPrivatePost = (this.id.charAt(0) === '_');
     if (!this.ajaxData) {
       this.ajaxData = [{ index: 0, type: 'title', msg: 'Error Loading Post Data' }];
-      axios.get(`/${this.id}/post_data.json`).then(({ data }) => {
-        this.postContent = data;
-      });
+      if (isPrivatePost) {
+        const authToken = Cookie.get('ft-auth-token');
+        if (authToken) {
+          // I could change the error message to something like "not signed in"
+          // I'm just leaving the generic error for now though
+
+          // the rest of this block is a stub until the API gateway is working
+          console.log(`pinging API Gateway with token "${authToken}"`);
+          newId = this.id.substring(1);
+          axios.get(`/${newId}/post_data.json`).then(({ data }) => {
+            this.postContent = data;
+          });
+        }
+      } else {
+        axios.get(`/${this.id}/post_data.json`).then(({ data }) => {
+          this.postContent = data;
+        });
+      }
     }
     return {
       postContent: this.ajaxData,
+      resolvedId: newId,
     };
   },
   components: {
