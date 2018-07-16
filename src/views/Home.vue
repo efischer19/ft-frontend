@@ -1,5 +1,6 @@
 <template>
   <div id="nav">
+    <SignIn/>
     <h2>Currently Available Posts</h2>
     <ul>
       <li v-for="post in posts" :key="post.path">
@@ -15,9 +16,13 @@
 
 <script>
 import axios from 'axios';
+import SignIn from '@/components/SignIn.vue';
 
 export default {
   name: 'home',
+  components: {
+    SignIn,
+  },
   props: {
     postPaths: {
       default: () => [{}],

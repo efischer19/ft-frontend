@@ -2,10 +2,15 @@
 
 exports[`Home should match snapshot 1`] = `
 <div id="nav">
+  <div id="signin-header">
+    <a href="/login_success?id_token=12345">
+      Click Here to Sign In
+    </a>
+  </div>
   <h2>Currently Available Posts</h2>
   <ul>
     <li>
-      <a href="#/posts/mc">
+      <a href="/posts/mc">
         Mac and Cheese
       </a>
     </li>
