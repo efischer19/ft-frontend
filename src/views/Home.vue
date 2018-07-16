@@ -1,21 +1,25 @@
 <template>
   <div id="nav">
     <SignIn/>
-    <h2>Currently Available Posts</h2>
+    <h1>Currently Available Posts</h1>
     <ul>
       <li v-for="post in publicPosts" :key="post.path">
-        <router-link
-          :to="`posts/${post.path}`"
-        >
-          {{ post.title }}
-        </router-link>
+        <h2>
+          <router-link
+            :to="`posts/${post.path}`"
+          >
+            {{ post.title }}
+          </router-link>
+        </h2>
       </li>
       <li v-for="post in privatePosts" :key="post.path">
-        <router-link
-          :to="`posts/_${post.path}`"
-        >
-          {{ post.title }}
-        </router-link>
+        <h2>
+          <router-link
+            :to="`posts/_${post.path}`"
+          >
+            {{ post.title }}
+          </router-link>
+        </h2>
       </li>
     </ul>
   </div>

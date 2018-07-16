@@ -33,12 +33,12 @@ img {
   top:auto;
 }
 
-#nav a {
-  line-height:1.2;
-  color: #2c3e50;
+#signin-header > p {
+  display: inline-block;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#signin-header > a {
+  float: right;
+  margin: 20px auto;
 }
 </style>
