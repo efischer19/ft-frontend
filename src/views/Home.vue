@@ -52,7 +52,7 @@ export default {
     if (!this.privatePosts) {
       const authToken = Cookie.get('ft-auth-token');
       if (authToken) {
-        console.log(authToken);
+        console.log(`pinging API Gateway with token "${authToken}"`);
         axios.get('/api/posts2.json') // same as public get for now; will eventually hit API Gateway instead
           .then(({ data }) => {
             this.privatePosts = data;
