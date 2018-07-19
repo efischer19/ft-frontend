@@ -56,10 +56,14 @@ export default {
           // I could change the error message to something like "not signed in"
           // I'm just leaving the generic error for now though
 
-          // the rest of this block is a stub until the API gateway is working
-          console.log(`pinging API Gateway with token "${authToken}"`);
           newId = this.id.substring(1);
-          axios.get(`/${newId}/post_data.json`).then(({ data }) => {
+          axios.get({
+            url: `https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/post-data/${newId}`,
+            headers: {
+              'x-api-key': 'rWxZBY8KEo5dAsvwlJl1E4H3vmy0a3H37yEj4LPE',
+              Authorization: authToken,
+            },
+          }).then(({ data }) => {
             this.postContent = data;
           });
         }

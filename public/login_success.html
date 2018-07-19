@@ -1,0 +1,12 @@
+<script type="application/javascript">
+  var params = window.location.hash.substring(1).split('&');
+  var token = params.find(function(item) {
+    return item.startsWith('id_token=');
+  }).replace('id_token', 'ft-auth-token');
+  var d = new Date();
+  d.setTime(d.getTime() + (2*60*60*1000));
+  var expires = ";expires="+ d.toUTCString();
+  document.cookie = token + expires + + ";path=/";
+  console.log(document.cookie);
+  window.location.replace('/');
+</script>

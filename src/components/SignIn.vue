@@ -4,7 +4,7 @@
       <p>Hello signed-in user!</p>
       <a v-on:click="sign_out" href="/">Sign Out</a>
     </template>
-    <a v-else href="https://signin.fischerthings.com/login?response_type=token&client_id=6a8t6a9st8fqkbt81n9mtb2aag&redirect_uri=https://fischerthings.com/login_success">
+    <a v-else href="https://signin.fischerthings.com/login?response_type=token&client_id=6a8t6a9st8fqkbt81n9mtb2aag&redirect_uri=https://fischerthings.com/login_success.html">
       Click Here to Sign In
     </a>
   </div>

@@ -43,20 +43,23 @@ export default {
   },
   data() {
     if (!this.publicPosts) {
-      axios.get('/api/posts.json')
-        .then(({ data }) => {
-          this.publicPosts = data;
-        });
+      axios.get('/api/posts2.json').then(({ data }) => {
+        this.publicPosts = data;
+      });
     }
 
     if (!this.privatePosts) {
       const authToken = Cookie.get('ft-auth-token');
       if (authToken) {
-        console.log(`pinging API Gateway with token "${authToken}"`);
-        axios.get('/api/posts2.json') // same as public get for now; will eventually hit API Gateway instead
-          .then(({ data }) => {
-            this.privatePosts = data;
-          });
+        axios.get({
+          url: 'https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/posts',
+          headers: {
+            'x-api-key': 'rWxZBY8KEo5dAsvwlJl1E4H3vmy0a3H37yEj4LPE',
+            Authorization: authToken,
+          },
+        }).then(({ data }) => {
+          this.privatePosts = data;
+        });
       }
     }
     return {
