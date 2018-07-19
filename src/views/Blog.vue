@@ -57,13 +57,15 @@ export default {
           // I'm just leaving the generic error for now though
 
           newId = this.id.substring(1);
-          axios.get({
-            url: `https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/post-data/${newId}`,
-            headers: {
-              'x-api-key': 'rWxZBY8KEo5dAsvwlJl1E4H3vmy0a3H37yEj4LPE',
-              Authorization: authToken,
+          axios.get(
+            `https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/post-data/${newId}`,
+            {
+              headers: {
+                'X-Api-Key': 'oZE5pkcS5H4PlndobzKdH9wmoxO9uLqa2tY5wtaH',
+                Authorization: authToken,
+              },
             },
-          }).then(({ data }) => {
+          ).then(({ data }) => {
             this.postContent = data;
           });
         }

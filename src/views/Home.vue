@@ -51,13 +51,15 @@ export default {
     if (!this.privatePosts) {
       const authToken = Cookie.get('ft-auth-token');
       if (authToken) {
-        axios.get({
-          url: 'https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/posts',
-          headers: {
-            'x-api-key': 'rWxZBY8KEo5dAsvwlJl1E4H3vmy0a3H37yEj4LPE',
-            Authorization: authToken,
+        axios.get(
+          'https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/posts',
+          {
+            headers: {
+              'X-Api-Key': 'oZE5pkcS5H4PlndobzKdH9wmoxO9uLqa2tY5wtaH',
+              Authorization: authToken,
+            },
           },
-        }).then(({ data }) => {
+        ).then(({ data }) => {
           this.privatePosts = data;
         });
       }
