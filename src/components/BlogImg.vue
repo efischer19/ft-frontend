@@ -1,5 +1,5 @@
 <template>
-  <a :href="processedBaseLink">
+  <a :href="largeFileLink">
       <img :src="smallFileLink" :alt="altText">
       <div class="hidden">Click for high-resolution image</div>
   </a>
@@ -9,21 +9,26 @@
 export default {
   name: 'BlogImg',
   props: {
-    baseFileLink: String,
+    fileLinks: Object,
     altText: String,
     postId: String,
   },
   computed: {
-    processedBaseLink() {
-      if (this.baseFileLink.startsWith('http')) {
+    largeFileLink() {
+      if (this.fileLinks.large) {
         // this is a preprocessed, signed link to a private file. Pass it through.
-        return this.baseFileLink;
+        return this.fileLinks.large;
       }
       // this is a not-yet-complete path to a public file
-      return `/api/public/${this.postId}/${this.baseFileLink}`;
+      return `/api/public/${this.postId}/${this.fileLinks.public}`;
     },
     smallFileLink() {
-      return this.processedBaseLink.replace(/(\.jpg)/, '.small$1');
+      if (this.fileLinks.small) {
+        // this is a preprocessed, signed link to a private file. Pass it through.
+        return this.fileLinks.small;
+      }
+      // this is a not-yet-complete path to a public file
+      return `/api/public/${this.postId}/${this.fileLinks.public.replace(/(\.jpg)/, '.small$1')}`;
     },
   },
 };

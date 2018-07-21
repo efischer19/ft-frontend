@@ -14,7 +14,7 @@
       />
       <BlogImg
         v-else-if="element.type === 'img'"
-        v-bind:baseFileLink="element.link"
+        v-bind:fileLinks="element.signed || {'public': element.link}"
         v-bind:postId="resolvedId"
         v-bind:altText="element.alt"
         :key="element.index"
