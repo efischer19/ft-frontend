@@ -10,7 +10,7 @@ exports[`Home should match snapshot 1`] = `
   <ul>
     <li>
       <h2>
-        <a href="/posts/mc">
+        <a href="#/posts/mc">
           Mac and Cheese
         </a>
       </h2>

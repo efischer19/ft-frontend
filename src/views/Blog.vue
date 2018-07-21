@@ -14,7 +14,8 @@
       />
       <BlogImg
         v-else-if="element.type === 'img'"
-        v-bind:baseFileLink="`/api/${resolvedPathAndId}/${element.link}`"
+        v-bind:baseFileLink="element.link"
+        v-bind:postId="resolvedId"
         v-bind:altText="element.alt"
         :key="element.index"
       />
@@ -77,7 +78,7 @@ export default {
     }
     return {
       postContent: this.ajaxData,
-      resolvedPathAndId: `${isPrivatePost ? 'private' : 'public'}/${newId}`,
+      resolvedId: newId,
     };
   },
   components: {
