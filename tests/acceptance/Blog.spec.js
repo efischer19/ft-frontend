@@ -14,7 +14,7 @@ describe('Blog', () => {
       },
     }).$mount();
 
-    expect(mockAxios.get).toHaveBeenCalledWith('/mc/post_data.json');
+    expect(mockAxios.get).toHaveBeenCalledWith('/api/public/mc/post_data.json');
     mockAxios.mockResponse({ data: mockResponseObj });
 
     const renderer = createRenderer();

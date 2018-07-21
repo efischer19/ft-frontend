@@ -3,9 +3,8 @@
 exports[`Home should match snapshot 1`] = `
 <div id="nav">
   <div id="signin-header">
-    <a href="https://signin.fischerthings.com/login?response_type=token&amp;client_id=6a8t6a9st8fqkbt81n9mtb2aag&amp;redirect_uri=https://fischerthings.com/login_success.html">
-      Click Here to Sign In
-    </a>
+    <p>You are not signed in</p>
+    <a href="https://signin.fischerthings.com/login?response_type=token&amp;client_id=6a8t6a9st8fqkbt81n9mtb2aag&amp;redirect_uri=https://fischerthings.com/login_success.html">Click Here to Sign In</a>
   </div>
   <h1>Currently Available Posts</h1>
   <ul>

@@ -70,7 +70,7 @@ export default {
           });
         }
       } else {
-        axios.get(`/${this.id}/post_data.json`).then(({ data }) => {
+        axios.get(`/api/public/${this.id}/post_data.json`).then(({ data }) => {
           this.postContent = data;
         });
       }

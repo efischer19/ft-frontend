@@ -16,7 +16,7 @@ describe('Home', () => {
       },
     }).$mount();
 
-    expect(mockAxios.get).toHaveBeenCalledWith('/api/posts2.json');
+    expect(mockAxios.get).toHaveBeenCalledWith('/api/public/posts.json');
     mockAxios.mockResponse({ data: mockResponseObj });
 
     const renderer = createRenderer();

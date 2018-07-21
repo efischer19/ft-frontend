@@ -43,7 +43,7 @@ export default {
   },
   data() {
     if (!this.publicPosts) {
-      axios.get('/api/posts2.json').then(({ data }) => {
+      axios.get('/api/public/posts.json').then(({ data }) => {
         this.publicPosts = data;
       });
     }
