@@ -50,5 +50,163 @@
     "type": "img",
     "link": "20180519_mc_bowl_shot_1.jpg",
     "alt": "2 finished bowls of mac and cheese, ready to eat"
+  },
+  {
+    "index": 7,
+    "type": "header",
+    "msg": "Detailed Follow-Along"
+  },
+  {
+    "index": 8,
+    "type": "p",
+    "rawMsg": "The base recipe above is all you need if you're comfortable in the kitchen and have made this before, but in case you haven't you may be interested in following along with the dinner I made last night. The first thing you probably noticed is that I served my noodles with broccoli - I tend to enjoy adding some sort of green vegetable to the dish, as it then becomes a first-class meal for Amanda and I to share. Broccoli is particular is nice because it's very easy to \"lightly cook\", which I'll expand on below."
+  },
+  {
+    "index": 9,
+    "type": "header",
+    "msg": "Ingredients"
+  },
+  {
+    "index": 10,
+    "type": "img",
+    "link": "20180519_mc_ingredients.jpg",
+    "alt": "All my ingredients gathed on the countertop"
+  },
+  {
+    "index": 11,
+    "type": "p",
+    "rawMsg": "There's a lot going on here. I'm going to walk down the ingredient list and expand on each item so you know what your options are."
+  },
+  {
+    "index": 12,
+    "type": "list",
+    "items": [
+      "Pasta: Large elbows are my abosolute favorite in this dish, but you can use anything that looks like it'll hold sauce well. Here I'm using rotini, you could also sub in shells, wheels, or anything else they sell in your pasta aisle. Measure out half of a one pound box, and cook it according to package directions. If there's a range of times, use the smallest end of the range.",
+      "Cheese: Don't skimp here. As-sharp-as-possible cheddar is the default, this time we got ourselves a smoked variety. Since cheese usually comes in 8 ounce blocks but the recipe calls for 10, I supplement with whatever is laying around (such as goat cheese). Whatever you do, avoid pre-shredded bags if at all possible. The anti-coagulants they add will make for a rough time when you're trying to melt it all down into a smooth sauce.",
+      "Broccoli: If you're using peas or some other frozen veggie, cook them separately while the noodles are boiling and add them at the very end. For broccoli (and I'd assume several other types of fresh veggie), get them cut up and into the colander you're going to use to drain the pasta before the pasta finished cooking.",
+      "Evaporated Milk: This, as I understand it, is the secret to the quickness of this stovetop recipe. It tends to be sold in 12 ounce cans, so reserve the other half to go with your other half-box of pasta later in the week.",
+      "Butter/Eggs/Salt/Mustard/Pepper: Nothing special here, just add the ingredients as described in the base recipe. You can modify the spices a bit if desired; chili powder and smoked paprika have both hung out with ground mustard in my pot successfully before."
+    ]
+  },
+  {
+    "index": 13,
+    "type": "header",
+    "msg": "Let's Get Started"
+  },
+  {
+    "index": 14,
+    "type": "p",
+    "rawMsg": "Start by boiling some water in your mac and cheese pot. Pick a large one, as it's going to hold the entire dish."
+  },
+  {
+    "index": 15,
+    "type": "img",
+    "link": "20180519_mc_start_water.jpg",
+    "alt": "My dutch oven on the stove, filled with water for pasta"
+  },
+  {
+    "index": 16,
+    "type": "p",
+    "rawMsg": "While I waited for that, I started chopping up the broccoli. Remember, it goes into the colander!"
+  },
+  {
+    "index": 17,
+    "type": "img",
+    "link": "20180519_mc_chop_broccoli.jpg",
+    "alt": "Partially chopped head of broccoli on my cutting board, next to the colander holding bite size florets"
+  },
+  {
+    "index": 18,
+    "type": "p",
+    "rawMsg": "Once the water is at a rolling boil, add pasta. Give this a stir every so often to prevent starch-sticking to the bottom of the pot."
+  },
+  {
+    "index": 19,
+    "type": "img",
+    "link": "20180519_mc_start_pasta.jpg",
+    "alt": "The same dutch oven from before, now with pasta added in"
+  },
+  {
+    "index": 20,
+    "type": "p",
+    "rawMsg": "As the pasta cooked, I finished the broccoli and moved on to shredding the cheese."
+  },
+  {
+    "index": 21,
+    "type": "img",
+    "link": "20180519_mc_cheese_pile.jpg",
+    "alt": "A pile of freshly-shredded cheese on my cutting board"
+  },
+  {
+    "index": 22,
+    "type": "p",
+    "rawMsg": "Now for the fun bit. Once the pasta is done, I drain it in the sink using my broccoli-filled colander. The heat of the pasta water will start cooking the broccoli, but there's no chance at all of having an overcooked mush."
+  },
+  {
+    "index": 23,
+    "type": "img",
+    "link": "20180519_mc_drain_pasta.jpg",
+    "alt": "Action shot of pasta draining over broccoli"
+  },
+  {
+    "index": 24,
+    "type": "img",
+    "link": "20180519_mc_drain_pasta_2.jpg",
+    "alt": "Another action shot of pasta draining over broccoli"
+  },
+  {
+    "index": 25,
+    "type": "p",
+    "rawMsg": "Noodles and veggies both go back into the pot, where they're introduced to my good friend butter. While the butter melts, mix the milk, eggs, and spices in a measuring cup if you haven't already done so."
+  },
+  {
+    "index": 26,
+    "type": "img",
+    "link": "20180519_mc_add_butter.jpg",
+    "alt": "Pasta, broccoli, and butter in the pot together"
+  },
+  {
+    "index": 27,
+    "type": "p",
+    "rawMsg": "Once the butter is all melted, give the pot a good stir so that everything has a nice coating. Then pour in the milk mixture and give it a stir too."
+  },
+  {
+    "index": 28,
+    "type": "img",
+    "link": "20180519_mc_add_milk_mix.jpg",
+    "alt": "Action shot of milk mixture being poured into pot"
+  },
+  {
+    "index": 29,
+    "type": "p",
+    "rawMsg": "Here comes the moneymaker. Gradually add the cheese, stirring as you go, and continue to stir over low heat until smooth."
+  },
+  {
+    "index": 30,
+    "type": "img",
+    "link": "20180519_mc_add_cheddar.jpg",
+    "alt": "Cheese being added to the pot"
+  },
+  {
+    "index": 31,
+    "type": "img",
+    "link": "20180519_mc_add_cheddar_2.jpg",
+    "alt": "More cheese being added to the pot"
+  },
+  {
+    "index": 32,
+    "type": "p",
+    "rawMsg": "You'll know it's done when you hear that signature squelch of smooth creamy goodness. Serve and eat pronto, if it cools down the texture will get all weird. If that does happen (or you somehow have leftovers?), just reheat slowly until it looks irresistible again."
+  },
+  {
+    "index": 33,
+    "type": "img",
+    "link": "20180519_mc_done_melting.jpg",
+    "alt": "A finished pot of mac and cheese"
+  },
+  {
+    "index": 34,
+    "type": "header",
+    "msg": "Now go forth and be cheesy"
   }
 ]

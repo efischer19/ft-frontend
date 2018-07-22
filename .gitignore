@@ -20,5 +20,6 @@ yarn-error.log*
 *.sln
 *.sw*
 
-# I have these available for the test post, but they're not used at the moment
-unused_pics/*
+# private posts are private
+# I won't mirror *every* public post to github, but the initial one can go up for demo purposes
+public/api/private/*
