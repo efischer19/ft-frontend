@@ -1,0 +1,31 @@
+[
+  {
+    "index": 0,
+    "type": "title",
+    "msg": ""
+  },
+  {
+    "index": 1,
+    "type": "p",
+    "rawMsg": ""
+  },
+  {
+    "index": 2,
+    "type": "img",
+    "link": "",
+    "alt": ""
+  },
+  {
+    "index": 3,
+    "type": "header",
+    "msg": ""
+  },
+  {
+    "index": 4,
+    "type": "list",
+    "items": [
+      "",
+      ""
+    ]
+  }
+]
