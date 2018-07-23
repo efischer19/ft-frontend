@@ -1,6 +1,9 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -41,6 +44,18 @@ module.exports = {
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.[chunkhash].css',
+    }),
+    new HtmlWebpackPlugin({
+      template: 'public/index.html',
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'allChunks',
+    }),
+    new HtmlBeautifyPlugin({
+      config: {
+        indent_size: 2,
+      },
     }),
   ],
   optimization: {
