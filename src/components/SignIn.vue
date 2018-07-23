@@ -1,7 +1,7 @@
 <template>
   <div id='signin-header'>
     <template v-if="hasAuthToken">
-      <p>Hello signed-in user!</p>
+      <p>Hello {{ userName }}!</p>
       <a v-on:click="sign_out" href="/">Sign Out</a>
     </template>
     <template v-else>
@@ -20,6 +20,16 @@ export default {
     hasAuthToken() {
       return Boolean(Cookie.get('ft-auth-token'));
     },
+    userName() {
+      if (!this.hasAuthToken) {
+        return 'Anonymous User';
+      }
+      try {
+        return JSON.parse(atob(Cookie.get('ft-auth-token').split('.')[1]))['cognito:username'];
+      } catch (error) {
+        return 'Signed-In User';
+      }
+    },
   },
   methods: {
     sign_out() {
@@ -29,3 +39,20 @@ export default {
   },
 };
 </script>
+
+<style>
+#signin-header {
+  border-bottom: 6px solid darkgreen;
+  background-color: lightgray;
+  padding: 10px;
+}
+
+#signin-header > p {
+  display: inline-block;
+}
+
+#signin-header > a {
+  float: right;
+  margin: 20px auto;
+}
+</style>

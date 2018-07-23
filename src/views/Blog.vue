@@ -49,8 +49,7 @@ export default {
   data() {
     let newId = this.id;
     const isPrivatePost = (this.id.charAt(0) === '_');
-    if (!this.ajaxData) {
-      this.ajaxData = [{ index: 0, type: 'title', msg: 'Error Loading Post Data' }];
+    if (!this.postContent) {
       if (isPrivatePost) {
         const authToken = Cookie.get('ft-auth-token');
         if (authToken) {
@@ -77,7 +76,7 @@ export default {
       }
     }
     return {
-      postContent: this.ajaxData,
+      postContent: [{ index: 0, type: 'p', rawMsg: 'Loading post...' }],
       resolvedId: newId,
     };
   },

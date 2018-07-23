@@ -32,13 +32,4 @@ img {
   left:-10000px;
   top:auto;
 }
-
-#signin-header > p {
-  display: inline-block;
-}
-
-#signin-header > a {
-  float: right;
-  margin: 20px auto;
-}
 </style>

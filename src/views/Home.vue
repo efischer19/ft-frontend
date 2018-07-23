@@ -1,14 +1,16 @@
 <template>
   <div id="nav">
     <SignIn/>
-    <h1>Currently Available Posts</h1>
+    <h1>Fischer Things</h1>
     <ul>
       <li v-for="post in publicPosts" :key="post.path">
         <h2>
           <router-link
             :to="`posts/${post.path}`"
           >
-            {{ post.title }}
+            <div class="postLink">
+              {{ post.title }}
+            </div>
           </router-link>
         </h2>
       </li>
@@ -17,7 +19,9 @@
           <router-link
             :to="`posts/_${post.path}`"
           >
-            {{ post.title }}
+            <div class="postLink">
+              {{ post.title }}
+            </div>
           </router-link>
         </h2>
       </li>
@@ -71,3 +75,31 @@ export default {
   },
 };
 </script>
+
+<style>
+#nav h1 {
+  margin: auto;
+  width: 50%;
+  margin-top: 20px;
+  font-size: 3em;
+}
+
+#nav ul {
+  list-style-type: none;
+  border: 2px solid darkgray;
+  border-radius: 20px;
+  padding: 0;
+}
+
+#nav li {
+  border-top: 2px solid darkgray;
+}
+
+#nav li:first-child {
+  border-top: none;
+}
+
+.postLink {
+  margin: 10px;
+}
+</style>
