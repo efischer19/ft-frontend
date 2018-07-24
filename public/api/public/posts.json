@@ -1,6 +1,9 @@
-[
-  {
-    "path": "mc",
-    "title": "Mac and Cheese"
-  }
-]
+{
+  "Cooking": [
+    {
+      "path": "mc",
+      "title": "Mac and Cheese",
+      "date": "Sun May 20 2018"
+    }
+  ]
+}

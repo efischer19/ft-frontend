@@ -2,30 +2,36 @@
   <div id="nav">
     <SignIn/>
     <h1>Fischer Things</h1>
-    <ul>
-      <li v-for="post in publicPosts" :key="post.path">
-        <h2>
-          <router-link
-            :to="`posts/${post.path}`"
-          >
-            <div class="postLink">
-              {{ post.title }}
-            </div>
-          </router-link>
-        </h2>
-      </li>
-      <li v-for="post in privatePosts" :key="post.path">
-        <h2>
+    <section v-for="(posts, topic) in privatePosts" :key="topic">
+      <h2 class="privateTopic">{{ topic }}</h2>
+      <ul>
+        <li v-for="post in posts" :key="post.path">
           <router-link
             :to="`posts/_${post.path}`"
           >
             <div class="postLink">
-              {{ post.title }}
+              <p class="postTitle">{{ post.title }}</p>
+              <p class="postDate">{{ getDisplayDate(post.date) }}</p>
             </div>
           </router-link>
-        </h2>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </section>
+    <section v-for="(posts, topic) in publicPosts" :key="topic">
+      <h2 class="publicTopic">{{ topic }}</h2>
+      <ul>
+        <li v-for="post in posts" :key="post.path">
+          <router-link
+            :to="`posts/${post.path}`"
+          >
+            <div class="postLink">
+              <p class="postTitle">{{ post.title }}</p>
+              <p class="postDate">{{ getDisplayDate(post.date) }}</p>
+            </div>
+          </router-link>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
@@ -41,7 +47,7 @@ export default {
   },
   props: {
     postPaths: {
-      default: () => [],
+      default: () => {},
       type: Array,
     },
   },
@@ -73,6 +79,12 @@ export default {
       privatePosts: this.postPaths,
     };
   },
+  methods: {
+    getDisplayDate: (date) => {
+      const options = { day: 'numeric', month: 'short' };
+      return new Date(date).toLocaleDateString('en-US', options);
+    },
+  },
 };
 </script>
 
@@ -83,24 +95,47 @@ export default {
   margin-top: 20px;
   font-size: 3em;
   text-align: center;
+  color: #404040;
+}
+
+#nav section {
+  border: 5px solid #404040;
+  border-radius: 20px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-width: 5px;
+  margin-top: 20px;
+  background-color: #404040;
+}
+
+#nav h2 {
+  color: #E6E6E6;
+  margin: 10px;
 }
 
 #nav ul {
   list-style-type: none;
-  border: 2px solid darkgray;
-  border-radius: 20px;
   padding: 0;
+  background-color: #E6E6E6;
+  margin-bottom: 0;
+  padding-bottom: 1px;
 }
 
 #nav li {
   border-top: 2px solid darkgray;
 }
 
-#nav li:first-child {
-  border-top: none;
-}
-
 .postLink {
   margin: 10px;
+  overflow: hidden;
+}
+
+.postLink .postTitle {
+  float: left;
+}
+
+.postLink .postDate {
+  float: right;
+  color: #404040;
 }
 </style>
