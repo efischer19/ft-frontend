@@ -6,7 +6,7 @@
     </template>
     <template v-else>
       <p>You are not signed in</p>
-      <a href="https://signin.fischerthings.com/login?response_type=token&client_id=6a8t6a9st8fqkbt81n9mtb2aag&redirect_uri=https://fischerthings.com/login_success.html">Click Here to Sign In</a>
+      <a href="https://signin.fischerthings.com/login?response_type=token&client_id=6a8t6a9st8fqkbt81n9mtb2aag&redirect_uri=https://fischerthings.com/login_success.html">Sign In</a>
     </template>
   </div>
 </template>
@@ -45,14 +45,15 @@ export default {
   border-bottom: 6px solid darkgreen;
   background-color: lightgray;
   padding: 10px;
+  overflow: hidden;
 }
 
 #signin-header > p {
-  display: inline-block;
+  float: left;
+  margin: 0;
 }
 
 #signin-header > a {
   float: right;
-  margin: 20px auto;
 }
 </style>
