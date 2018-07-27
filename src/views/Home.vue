@@ -65,7 +65,7 @@ export default {
 
     if (!this.privatePosts) {
       const cacheData = getData(`${this.$route.path}_private`);
-      if (cacheData) { this.privatePosts = JSON.parseData(cacheData); }
+      if (cacheData) { this.privatePosts = JSON.parse(cacheData); }
       const authToken = getData('ft-auth-token');
       if (authToken) {
         axios.get(
