@@ -12,20 +12,21 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie';
+
+import { getData } from '@/util/expiringSessionCache';
 
 export default {
   name: 'SignInHeader',
   computed: {
     hasAuthToken() {
-      return Boolean(Cookie.get('ft-auth-token'));
+      return Boolean(getData('ft-auth-token'));
     },
     userName() {
       if (!this.hasAuthToken) {
         return 'Anonymous User';
       }
       try {
-        return JSON.parse(atob(Cookie.get('ft-auth-token').split('.')[1]))['cognito:username'];
+        return JSON.parse(atob(getData('ft-auth-token').split('.')[1]))['cognito:username'];
       } catch (error) {
         return 'Signed-In User';
       }
@@ -33,7 +34,7 @@ export default {
   },
   methods: {
     sign_out() {
-      Cookie.remove('ft-auth-token');
+      sessionStorage.clear();
       this.$forceUpdate();
     },
   },

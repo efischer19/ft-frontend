@@ -2,6 +2,7 @@ import { createRenderer } from 'vue-server-renderer';
 import Vue from 'vue';
 import mockAxios from 'jest-mock-axios';
 import Blog from '@/views/Blog.vue';
+import router from '@/router';
 
 const mockResponseObj = require('./post_data.json');
 
@@ -9,6 +10,7 @@ describe('Blog', () => {
   it('should match snapshot', () => {
     const Constructor = Vue.extend(Blog);
     const vm = new Constructor({
+      router,
       propsData: {
         id: 'mc',
       },

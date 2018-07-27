@@ -35,7 +35,6 @@
 
 <script>
 import axios from 'axios';
-import Cookie from 'js-cookie';
 
 import BlogTitle from '@/components/BlogTitle.vue';
 import BlogBodyGraph from '@/components/BlogBodyGraph.vue';
@@ -43,15 +42,19 @@ import BlogImg from '@/components/BlogImg.vue';
 import BlogHeader from '@/components/BlogHeader.vue';
 import BlogList from '@/components/BlogList.vue';
 
+import { getData, setData } from '@/util/expiringSessionCache';
+
 export default {
   name: 'blog',
   props: ['id'],
   data() {
+    const cacheData = getData(this.$route.path);
+    if (cacheData) { return JSON.parse(cacheData); }
     let newId = this.id;
     const isPrivatePost = (this.id.charAt(0) === '_');
     if (!this.postContent) {
       if (isPrivatePost) {
-        const authToken = Cookie.get('ft-auth-token');
+        const authToken = getData('ft-auth-token');
         if (authToken) {
           // I could change the error message to something like "not signed in"
           // I'm just leaving the generic error for now though
@@ -66,11 +69,13 @@ export default {
               },
             },
           ).then(({ data }) => {
+            setData(this.$route.path, JSON.stringify({ postContent: data, resolvedId: newId }));
             this.postContent = data;
           });
         }
       } else {
         axios.get(`/api/public/${this.id}/post_data.json`).then(({ data }) => {
+          setData(this.$route.path, JSON.stringify({ postContent: data, resolvedId: newId }));
           this.postContent = data;
         });
       }

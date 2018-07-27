@@ -37,8 +37,10 @@
 
 <script>
 import axios from 'axios';
-import Cookie from 'js-cookie';
+
 import SignIn from '@/components/SignIn.vue';
+
+import { getData, setData } from '@/util/expiringSessionCache';
 
 export default {
   name: 'home',
@@ -53,13 +55,18 @@ export default {
   },
   data() {
     if (!this.publicPosts) {
+      const cacheData = getData(`${this.$route.path}_public`);
+      if (cacheData) { this.publicPosts = JSON.parse(cacheData); }
       axios.get('/api/public/posts.json').then(({ data }) => {
+        setData(`${this.$route.path}_public`, JSON.stringify(data));
         this.publicPosts = data;
       });
     }
 
     if (!this.privatePosts) {
-      const authToken = Cookie.get('ft-auth-token');
+      const cacheData = getData(`${this.$route.path}_private`);
+      if (cacheData) { this.privatePosts = JSON.parseData(cacheData); }
+      const authToken = getData('ft-auth-token');
       if (authToken) {
         axios.get(
           'https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/posts',
@@ -70,6 +77,7 @@ export default {
             },
           },
         ).then(({ data }) => {
+          setData(`${this.$route.path}_private`, JSON.stringify(data));
           this.privatePosts = data;
         });
       }
