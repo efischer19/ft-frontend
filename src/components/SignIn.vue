@@ -1,8 +1,10 @@
 <template>
-  <div id='signin-header'>
+  <div id="signin-header">
     <template v-if="hasAuthToken">
       <p>Hello {{ userName }}!</p>
-      <a v-on:click="sign_out" href="/">Sign Out</a>
+      <a
+        href="/"
+        @click="sign_out">Sign Out</a>
     </template>
     <template v-else>
       <p>You are not signed in</p>
@@ -13,20 +15,20 @@
 
 <script>
 
-import { getData } from '@/util/expiringSessionCache';
+import { getCachedData } from '@/util/expiring-session-cache';
 
 export default {
   name: 'SignInHeader',
   computed: {
     hasAuthToken() {
-      return Boolean(getData('ft-auth-token'));
+      return Boolean(getCachedData('ft-auth-token'));
     },
     userName() {
       if (!this.hasAuthToken) {
         return 'Anonymous User';
       }
       try {
-        return JSON.parse(atob(getData('ft-auth-token').split('.')[1]))['cognito:username'];
+        return JSON.parse(atob(getCachedData('ft-auth-token').split('.')[1]))['cognito:username'];
       } catch (error) {
         return 'Signed-In User';
       }

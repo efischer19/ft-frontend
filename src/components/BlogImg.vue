@@ -1,7 +1,9 @@
 <template>
   <a :href="largeFileLink">
-      <img :src="smallFileLink" :alt="altText">
-      <div class="hidden">Click for high-resolution image</div>
+    <img
+      :src="smallFileLink"
+      :alt="altText">
+    <div class="hidden">Click for high-resolution image</div>
   </a>
 </template>
 
@@ -9,27 +11,50 @@
 export default {
   name: 'BlogImg',
   props: {
-    fileLinks: Object,
-    altText: String,
-    postId: String,
+    fileLinks: {
+      type: Object,
+      default: () => {},
+    },
+    altText: {
+      type: String,
+      default: '',
+    },
+    postId: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     largeFileLink() {
-      if (this.fileLinks.large) {
-        // this is a preprocessed, signed link to a private file. Pass it through.
-        return this.fileLinks.large;
-      }
-      // this is a not-yet-complete path to a public file
-      return `/api/public/${this.postId}/${this.fileLinks.public}`;
+      return this.getLink('large', '$1');
     },
     smallFileLink() {
-      if (this.fileLinks.small) {
+      return this.getLink('small', '.small$1');
+    },
+  },
+  methods: {
+    getLink(size, extReplaceString) {
+      if (this.fileLinks[size]) {
         // this is a preprocessed, signed link to a private file. Pass it through.
-        return this.fileLinks.small;
+        return this.fileLinks[size];
       }
+
       // this is a not-yet-complete path to a public file
-      return `/api/public/${this.postId}/${this.fileLinks.public.replace(/(\.jpg)/, '.small$1')}`;
+      return `/api/public/${this.postId}/${this.fileLinks.public.replace(/(\.jpg)/, extReplaceString)}`;
     },
   },
 };
 </script>
+
+<style>
+img {
+  width:100%;
+  height:auto;
+}
+
+.hidden {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+}
+</style>

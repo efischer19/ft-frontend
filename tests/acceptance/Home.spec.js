@@ -1,6 +1,7 @@
 import { createRenderer } from 'vue-server-renderer';
-import Vue from 'vue';
 import mockAxios from 'jest-mock-axios';
+import Vue from 'vue';
+
 import Home from '@/views/Home.vue';
 import router from '@/router';
 
@@ -16,7 +17,11 @@ describe('Home', () => {
       },
     }).$mount();
 
-    expect(mockAxios.get).toHaveBeenCalledWith('/api/public/posts.json');
+    // public/private can happen in either order, either will suffice here
+    expect(mockAxios.get).toHaveBeenCalledWith(
+      expect.any(String),
+      { headers: { Authorization: '', 'X-Api-Key': '' } },
+    );
     mockAxios.mockResponse({ data: mockResponseObj });
 
     const renderer = createRenderer();

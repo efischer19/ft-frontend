@@ -6,7 +6,10 @@
 export default {
   name: 'BlogTitle',
   props: {
-    msg: String,
+    msg: {
+      type: String,
+      default: () => {},
+    },
   },
 };
 </script>

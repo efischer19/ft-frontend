@@ -1,11 +1,12 @@
-export function setData(key, data, expiry) {
+export function setCachedData(key, data, expiry) {
+  const TWO_HOURS = 1000 * 60 * 20;
   sessionStorage.setItem(
     key,
-    `${expiry || Date.now() + (1000 * 60 * 20)}|${data}`,
+    `${expiry || Date.now() + TWO_HOURS}|${data}`,
   );
 }
 
-export function getData(key) {
+export function getCachedData(key) {
   let ret = sessionStorage.getItem(key);
   if (!ret) { return undefined; }
   ret = ret.split('|', 2);

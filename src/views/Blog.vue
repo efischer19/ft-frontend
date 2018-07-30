@@ -3,30 +3,30 @@
     <template v-for="element in postContent">
       <BlogTitle
         v-if="element.type === 'title'"
-        v-bind:msg="element.msg"
+        :msg="element.msg"
         :key="element.index"
       />
-      <BlogBodyGraph
+      <BlogP
         v-else-if="element.type === 'p'"
-        v-bind:rawMsg="element.rawMsg"
-        v-bind:links="element.links"
+        :raw-msg="element.rawMsg"
+        :links="element.links"
         :key="element.index"
       />
       <BlogImg
         v-else-if="element.type === 'img'"
-        v-bind:fileLinks="element.signed || {'public': element.link}"
-        v-bind:postId="resolvedId"
-        v-bind:altText="element.alt"
+        :file-links="element.signed || {'public': element.link}"
+        :post-id="id"
+        :alt-text="element.alt"
         :key="element.index"
       />
       <BlogHeader
         v-else-if="element.type === 'header'"
-        v-bind:msg="element.msg"
+        :msg="element.msg"
         :key="element.index"
       />
       <BlogList
         v-else-if="element.type === 'list'"
-        v-bind:items="element.items"
+        :items="element.items"
         :key="element.index"
       />
     </template>
@@ -36,61 +36,63 @@
 <script>
 import axios from 'axios';
 
-import BlogTitle from '@/components/BlogTitle.vue';
-import BlogBodyGraph from '@/components/BlogBodyGraph.vue';
-import BlogImg from '@/components/BlogImg.vue';
+import { getCachedData, setCachedData } from '@/util/expiring-session-cache';
 import BlogHeader from '@/components/BlogHeader.vue';
+import BlogImg from '@/components/BlogImg.vue';
 import BlogList from '@/components/BlogList.vue';
+import BlogP from '@/components/BlogP.vue';
+import BlogTitle from '@/components/BlogTitle.vue';
 
-import { getData, setData } from '@/util/expiringSessionCache';
 
 export default {
-  name: 'blog',
-  props: ['id'],
-  data() {
-    const cacheData = getData(this.$route.path);
-    if (cacheData) { return JSON.parse(cacheData); }
-    let newId = this.id;
-    const isPrivatePost = (this.id.charAt(0) === '_');
-    if (!this.postContent) {
-      if (isPrivatePost) {
-        const authToken = getData('ft-auth-token');
-        if (authToken) {
-          // I could change the error message to something like "not signed in"
-          // I'm just leaving the generic error for now though
-
-          newId = this.id.substring(1);
-          axios.get(
-            `https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/post-data/${newId}`,
-            {
-              headers: {
-                'X-Api-Key': 'oZE5pkcS5H4PlndobzKdH9wmoxO9uLqa2tY5wtaH',
-                Authorization: authToken,
-              },
-            },
-          ).then(({ data }) => {
-            setData(this.$route.path, JSON.stringify({ postContent: data, resolvedId: newId }));
-            this.postContent = data;
-          });
-        }
-      } else {
-        axios.get(`/api/public/${this.id}/post_data.json`).then(({ data }) => {
-          setData(this.$route.path, JSON.stringify({ postContent: data, resolvedId: newId }));
-          this.postContent = data;
-        });
-      }
-    }
-    return {
-      postContent: [{ index: 0, type: 'p', rawMsg: 'Loading post...' }],
-      resolvedId: newId,
-    };
-  },
+  name: 'Blog',
   components: {
     BlogTitle,
-    BlogBodyGraph,
+    BlogP,
     BlogImg,
     BlogHeader,
     BlogList,
+  },
+  props: {
+    id: {
+      type: String,
+      default: '',
+    },
+  },
+  data() {
+    const cacheData = getCachedData(this.$route.path);
+    if (cacheData) { return JSON.parse(cacheData); }
+
+    const isPrivatePost = (this.id.charAt(0) === '_');
+
+    if (!this.postContent) {
+      let url = `/api/public/${this.id}/post_data.json`;
+      let headers = {};
+      if (isPrivatePost) {
+        // see note in Home.vue as to why I don't bother obscuring these values
+        const authToken = getCachedData('ft-auth-token');
+        this.id = this.id.substring(1);
+        url = `https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/post-data/${this.id}`;
+        headers = {
+          'X-Api-Key': 'oZE5pkcS5H4PlndobzKdH9wmoxO9uLqa2tY5wtaH',
+          Authorization: authToken,
+        };
+      }
+
+      axios.get(
+        url,
+        { headers: headers || {} },
+      ).then(({ data }) => {
+        setCachedData(this.$route.path, JSON.stringify({ postContent: data }));
+        this.postContent = data;
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+
+    return {
+      postContent: [{ index: 0, type: 'p', rawMsg: 'Loading post...' }],
+    };
   },
 };
 </script>

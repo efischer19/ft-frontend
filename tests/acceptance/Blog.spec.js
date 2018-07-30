@@ -1,6 +1,7 @@
 import { createRenderer } from 'vue-server-renderer';
-import Vue from 'vue';
 import mockAxios from 'jest-mock-axios';
+import Vue from 'vue';
+
 import Blog from '@/views/Blog.vue';
 import router from '@/router';
 
@@ -16,7 +17,7 @@ describe('Blog', () => {
       },
     }).$mount();
 
-    expect(mockAxios.get).toHaveBeenCalledWith('/api/public/mc/post_data.json');
+    expect(mockAxios.get).toHaveBeenCalledWith('/api/public/mc/post_data.json', { headers: {} });
     mockAxios.mockResponse({ data: mockResponseObj });
 
     const renderer = createRenderer();

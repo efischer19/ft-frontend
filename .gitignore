@@ -1,25 +1,8 @@
-.DS_Store
+# libraries, get them with 'npm install'
 node_modules
+
+# built files for deploying
 /dist
 
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw*
-
-# private posts are private
-# I won't mirror *every* public post to github, but the initial one can go up for demo purposes
-public/api/private/*
+# Only 1 demo post under /api, it already exists
+public/api/*

@@ -1,13 +1,19 @@
 <template>
-  <p v-html="formattedMsg"></p>
+  <p v-html="formattedMsg"/>
 </template>
 
 <script>
 export default {
-  name: 'BlogBodyGraph',
+  name: 'BlogP',
   props: {
-    rawMsg: String,
-    links: Object,
+    rawMsg: {
+      type: String,
+      default: '',
+    },
+    links: {
+      type: Object,
+      default: () => {},
+    },
   },
   computed: {
     formattedMsg() {

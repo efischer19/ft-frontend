@@ -21,15 +21,4 @@ body {
 h1,h2,h3 {
   line-height:1.2;
 }
-
-img {
-  width:100%;
-  height:auto;
-}
-
-.hidden {
-  position:absolute;
-  left:-10000px;
-  top:auto;
-}
 </style>

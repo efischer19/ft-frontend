@@ -2,89 +2,90 @@
   <div id="nav">
     <SignIn/>
     <h1>Fischer Things</h1>
-    <section v-for="(posts, topic) in privatePosts" :key="topic">
-      <h2 class="privateTopic">{{ topic }}</h2>
-      <ul>
-        <li v-for="post in posts" :key="post.path">
-          <router-link
-            :to="`posts/_${post.path}`"
-          >
-            <div class="postLink">
-              <p class="postTitle">{{ post.title }}</p>
-              <p class="postDate">{{ getDisplayDate(post.date) }}</p>
-            </div>
-          </router-link>
-        </li>
-      </ul>
-    </section>
-    <section v-for="(posts, topic) in publicPosts" :key="topic">
-      <h2 class="publicTopic">{{ topic }}</h2>
-      <ul>
-        <li v-for="post in posts" :key="post.path">
-          <router-link
-            :to="`posts/${post.path}`"
-          >
-            <div class="postLink">
-              <p class="postTitle">{{ post.title }}</p>
-              <p class="postDate">{{ getDisplayDate(post.date) }}</p>
-            </div>
-          </router-link>
-        </li>
-      </ul>
-    </section>
+    <template v-for="(post_listings, visibility) in posts">
+      <section
+        v-for="(posts, topic) in post_listings"
+        :key="topic">
+        <h2 class="topic">{{ topic }}</h2>
+        <ul>
+          <li
+            v-for="post in posts"
+            :key="post.path">
+            <router-link
+              :to="`posts/${visibility === 'private' ? '_' : ''}${post.path}`"
+            >
+              <div class="postLink">
+                <p class="postTitle">{{ post.title }}</p>
+                <p class="postDate">{{ getDisplayDate(post.date) }}</p>
+              </div>
+            </router-link>
+          </li>
+        </ul>
+      </section>
+    </template>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 
+import { getCachedData, setCachedData } from '@/util/expiring-session-cache';
 import SignIn from '@/components/SignIn.vue';
 
-import { getData, setData } from '@/util/expiringSessionCache';
-
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     SignIn,
   },
-  props: {
-    postPaths: {
-      default: () => {},
-      type: Array,
-    },
-  },
   data() {
-    if (!this.publicPosts) {
-      const cacheData = getData(`${this.$route.path}_public`);
-      if (cacheData) { this.publicPosts = JSON.parse(cacheData); }
-      axios.get('/api/public/posts.json').then(({ data }) => {
-        setData(`${this.$route.path}_public`, JSON.stringify(data));
-        this.publicPosts = data;
-      });
-    }
+    /*
+    a note on privacy:
+    Normally, one would say "hey, this URL and API key should not be checked into github, WTF?"
+    However, given the nature of my project (static, serverless site), I feel that these values
+    *must* be exposed to unsecured js at some point, so why act like they're obscured at all?
 
-    if (!this.privatePosts) {
-      const cacheData = getData(`${this.$route.path}_private`);
-      if (cacheData) { this.privatePosts = JSON.parse(cacheData); }
-      const authToken = getData('ft-auth-token');
-      if (authToken) {
-        axios.get(
-          'https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/posts',
-          {
-            headers: {
-              'X-Api-Key': 'oZE5pkcS5H4PlndobzKdH9wmoxO9uLqa2tY5wtaH',
-              Authorization: authToken,
-            },
-          },
-        ).then(({ data }) => {
-          setData(`${this.$route.path}_private`, JSON.stringify(data));
-          this.privatePosts = data;
-        });
+    I'm using the AWS free tier, and have my API key rate-limited to quite a low value by normal
+    web standards, given the limited audience I expect for the private portion of this site. You
+    could use these values to DDOS my API Gateway setup if you wanted to, but please don't, okay?
+    */
+    this.posts = {};
+    const urls = {
+      public: '/api/public/posts.json',
+      private: 'https://nccu1znzcj.execute-api.us-east-2.amazonaws.com/Prod/posts',
+    };
+
+    // auth and api key headers aren't needed for public posts, but they won't hurt anything either
+    const authToken = getCachedData('ft-auth-token') || '';
+    const apiKey = authToken ? 'oZE5pkcS5H4PlndobzKdH9wmoxO9uLqa2tY5wtaH' : '';
+    const headers = {
+      'X-Api-Key': apiKey,
+      Authorization: authToken,
+    };
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const visibility of ['public', 'private']) {
+      if (!this.posts[visibility]) {
+        const cacheData = getCachedData(`${this.$route.path}_${visibility}`);
+        if (cacheData) {
+          this.posts[visibility] = JSON.parse(cacheData);
+        } else {
+          axios.get(
+            urls[visibility],
+            { headers },
+          ).then(({ data }) => {
+            setCachedData(`${this.$route.path}_${visibility}`, JSON.stringify(data));
+            this.posts[visibility] = data;
+          }).catch((error) => {
+            console.log(error);
+          });
+        }
       }
     }
     return {
-      publicPosts: this.postPaths,
-      privatePosts: this.postPaths,
+      posts: {
+        public: [],
+        private: [],
+      },
     };
   },
   methods: {
@@ -97,6 +98,11 @@ export default {
 </script>
 
 <style>
+/*
+note that I use the #nav selector instead of vue's 'scoped' ability, for performance
+https://vue-loader.vuejs.org/guide/scoped-css.html#also-keep-in-mind
+*/
+
 #nav h1 {
   margin: auto;
   width: 100%;
@@ -133,16 +139,16 @@ export default {
   border-top: 2px solid darkgray;
 }
 
-.postLink {
+#nav .postLink {
   margin: 10px;
   overflow: hidden;
 }
 
-.postLink .postTitle {
+#nav .postTitle {
   float: left;
 }
 
-.postLink .postDate {
+#nav .postDate {
   float: right;
   color: #404040;
 }

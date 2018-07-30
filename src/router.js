@@ -1,8 +1,9 @@
-import Vue from 'vue';
 import Router from 'vue-router';
+import Vue from 'vue';
+
 import Blog from './views/Blog.vue';
-import Home from './views/Home.vue';
 import FourOhFour from './views/404.vue';
+import Home from './views/Home.vue';
 
 Vue.use(Router);
 

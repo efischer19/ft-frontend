@@ -1,6 +1,8 @@
 <template>
   <ul>
-    <li v-for="item in items" :key="item">{{ item }}</li>
+    <li
+      v-for="item in items"
+      :key="item">{{ item }}</li>
   </ul>
 </template>
 
@@ -8,7 +10,10 @@
 export default {
   name: 'BlogList',
   props: {
-    items: Array,
+    items: {
+      type: Array,
+      default: () => [],
+    },
   },
 };
 </script>
