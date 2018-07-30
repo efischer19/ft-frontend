@@ -62,12 +62,16 @@ export default {
       Authorization: authToken,
     };
 
+    const visibilities = ['public'];
+    if (authToken) { visibilities.push('private'); }
+
     // eslint-disable-next-line no-restricted-syntax
-    for (const visibility of ['public', 'private']) {
+    for (const visibility of visibilities) {
       if (!this.posts[visibility]) {
         const cacheData = getCachedData(`${this.$route.path}_${visibility}`);
         if (cacheData) {
           this.posts[visibility] = JSON.parse(cacheData);
+          this.$forceUpdate();
         } else {
           axios.get(
             urls[visibility],
@@ -83,8 +87,8 @@ export default {
     }
     return {
       posts: {
-        public: [],
-        private: [],
+        public: this.posts.public || [],
+        private: this.posts.private || [],
       },
     };
   },
