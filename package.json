@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "npx vue-cli-service serve",
+    "serve": "vue-cli-service serve",
     "build": "rm -rf dist && npx webpack",
-    "lint": "npx vue-cli-service lint",
-    "test": "npx vue-cli-service test:unit"
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.18.0",

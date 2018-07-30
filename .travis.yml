@@ -1,6 +1,7 @@
 language: node.js
 install:
   - sudo pip install awscli
+  - npm i
 script:
   - npm run lint
   - npm run test
