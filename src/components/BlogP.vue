@@ -8,11 +8,9 @@ export default {
   props: {
     rawMsg: {
       type: String,
-      default: '',
     },
     links: {
       type: Object,
-      default: () => {},
     },
   },
   computed: {

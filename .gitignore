@@ -4,5 +4,8 @@ node_modules
 # built files for deploying
 /dist
 
+# coverage reporting
+/coverage
+
 # Only 1 demo post under /api, it already exists
 public/api/*

@@ -24,9 +24,6 @@ export default {
       return Boolean(getCachedData('ft-auth-token'));
     },
     userName() {
-      if (!this.hasAuthToken) {
-        return 'Anonymous User';
-      }
       try {
         return JSON.parse(atob(getCachedData('ft-auth-token').split('.')[1]))['cognito:username'];
       } catch (error) {

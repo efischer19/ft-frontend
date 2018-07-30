@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import BlogP from '@/components/BlogP.vue';
 
-describe('BlogTitle.vue', () => {
+describe('BlogP.vue', () => {
   it('renders rawMsg without links', () => {
     const msg = 'test message';
     const wrapper = shallowMount(BlogP, {

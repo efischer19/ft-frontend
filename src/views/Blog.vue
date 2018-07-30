@@ -56,7 +56,6 @@ export default {
   props: {
     id: {
       type: String,
-      default: '',
     },
   },
   data() {
@@ -86,6 +85,7 @@ export default {
         setCachedData(this.$route.path, JSON.stringify({ postContent: data }));
         this.postContent = data;
       }).catch((error) => {
+        /* istanbul ignore next line */
         console.log(error);
       });
     }

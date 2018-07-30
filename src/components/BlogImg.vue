@@ -13,15 +13,12 @@ export default {
   props: {
     fileLinks: {
       type: Object,
-      default: () => {},
     },
     altText: {
       type: String,
-      default: '',
     },
     postId: {
       type: String,
-      default: '',
     },
   },
   computed: {

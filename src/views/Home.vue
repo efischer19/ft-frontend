@@ -80,6 +80,7 @@ export default {
             setCachedData(`${this.$route.path}_${visibility}`, JSON.stringify(data));
             this.posts[visibility] = data;
           }).catch((error) => {
+            /* istanbul ignore next line */
             console.log(error);
           });
         }
