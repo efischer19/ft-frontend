@@ -1,0 +1,22 @@
+language: node.js
+install:
+  - pip install awscli
+script:
+  - npm run lint
+  - npm run test
+  - npm run build
+deploy:
+  on:
+    branch: master
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: fischerthings.com
+  skip_cleanup: true
+  local_dir: dist
+  acl: public_read
+  region: us-east-2
+  cache_control: "max-age=43200"
+after_deploy:
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID_1 --paths "/*"
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID_2 --paths "/*"
