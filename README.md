@@ -15,7 +15,7 @@ So, given that background, here are the axioms I built this project from:
 * It'll be a one-way data flow, from my immediate family (the authors) to the audience.
 * I will have both publically and privately available posts, depending on the nature of the topic.
 * Private posts, by some mechanism to be determined later, should only be available to persons I authorize - my extended family, friends, and other people I know personally (at most ~1000 users).
-* **[K.I.S.S.](https://en.wikipedia.org/wiki/KISS_principle)**: HTML is a perfectly valid standard. CSS doesn't have to be complicated (shoutout to [bettermotherf\*\*\*ckingwebsite](http://bettermotherfuckingwebsite.com/) for my jumping-off point). Keep things simple! This principle also leads to having a good experience on mobile, FWIW.
+* **[K.I.S.S.](https://en.wikipedia.org/wiki/KISS_principle)**: HTML is a perfectly valid standard. CSS doesn't have to be complicated (shoutout to [bettermotherf\*\*\*ingwebsite](http://bettermotherfuckingwebsite.com/) for my jumping-off point). Keep things simple! This principle also leads to having a good experience on mobile, FWIW.
 * The latest and greatest in web development is serverless, and I want to do that. Given my low expected usage, a lot of the points raised in [this article](https://read.acloud.guru/six-months-of-serverless-lessons-learned-f6da86a73526) resonated with me. Why should I bother adminstering a server?
 
 ## Technologies I Use
