@@ -1,0 +1,43 @@
+[
+  {
+    "index": 0,
+    "type": "title",
+    "msg": "Frequently Asked Questions"
+  },
+  {
+    "index": 1,
+    "type": "header",
+    "msg": "What is this place?"
+  },
+  {
+    "index": 2,
+    "type": "p",
+    "rawMsg": "It's a family-photo sharing blog I built for myself, thanks for stopping by!"
+  },
+  {
+    "index": 3,
+    "type": "header",
+    "msg": "I don't see a sign-up link, how can I get an account?"
+  },
+  {
+    "index": 4,
+    "type": "p",
+    "rawMsg": "Login accounts are used to see the private, family pictures portion of this site. If I know you personally, welcome! Feel free to reach out in whatever way is most convenient to you - text, email, DM, smoke signal, whatever. All I need is an email address and you'll be on your way. If you can't contact me in any way, we probably don't know each other and the family photos I'm sharing aren't really intended for you. Enjoy the public posts though!"
+  },
+  {
+    "index": 5,
+    "type": "header",
+    "msg": "I'm interested in the tech that makes this site work. Where can I learn more?"
+  },
+  {
+    "index": 6,
+    "type": "p",
+    "rawMsg": "You're in luck! All the code that runs this site is open sourced, and I've done my best to document it over on the project's [[gh]]. The tl;dr is \"a serverless Vue application running on the AWS free tier\".",
+    "links": {
+      "gh": {
+        "title": "GitHub page",
+        "href": "https://github.com/efischer19/ft-frontend"
+      }
+    }
+  }
+]

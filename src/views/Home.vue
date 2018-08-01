@@ -1,28 +1,38 @@
 <template>
-  <div id="nav">
-    <SignIn/>
-    <h1>Fischer Things</h1>
-    <template v-for="(post_listings, visibility) in posts">
-      <section
-        v-for="(posts, topic) in post_listings"
-        :key="topic">
-        <h2 class="topic">{{ topic }}</h2>
-        <ul>
-          <li
-            v-for="post in posts"
-            :key="post.path">
-            <router-link
-              :to="`posts/${visibility === 'private' ? '_' : ''}${post.path}`"
-            >
-              <div class="postLink">
-                <p class="postTitle">{{ post.title }}</p>
-                <p class="postDate">{{ getDisplayDate(post.date) }}</p>
-              </div>
-            </router-link>
-          </li>
-        </ul>
-      </section>
-    </template>
+  <div id="home">
+    <nav>
+      <SignIn/>
+    </nav>
+    <header>
+      <h1>Fischer Things</h1>
+    </header>
+    <main>
+      <template v-for="(post_listings, visibility) in posts">
+        <section
+          v-for="(posts, topic) in post_listings"
+          :key="topic">
+          <h2 class="topic">{{ topic }}</h2>
+          <ul>
+            <li
+              v-for="post in posts"
+              :key="post.path">
+              <router-link
+                :to="`posts/${visibility === 'private' ? '_' : ''}${post.path}`"
+              >
+                <div class="postLink">
+                  <p class="postTitle">{{ post.title }}</p>
+                  <p class="postDate">{{ getDisplayDate(post.date) }}</p>
+                </div>
+              </router-link>
+            </li>
+          </ul>
+        </section>
+      </template>
+    </main>
+    <footer>
+      <p>© Eric Fischer 2018</p>
+      <a href="#/posts/faq">FAQ</a>
+    </footer>
   </div>
 </template>
 
@@ -103,21 +113,30 @@ export default {
 </script>
 
 <style>
+
 /*
-note that I use the #nav selector instead of vue's 'scoped' ability, for performance
+note that I use the #home selector instead of vue's 'scoped' ability, for performance
 https://vue-loader.vuejs.org/guide/scoped-css.html#also-keep-in-mind
 */
 
-#nav h1 {
+#home {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 30px  
+}
+
+#home h1 {
   margin: auto;
   width: 100%;
   margin-top: 20px;
-  font-size: 3em;
+  font-size: 2.5em;
   text-align: center;
   color: #404040;
 }
 
-#nav section {
+#home section {
   border: 5px solid #404040;
   border-radius: 20px;
   border-bottom-right-radius: 2px;
@@ -127,12 +146,12 @@ https://vue-loader.vuejs.org/guide/scoped-css.html#also-keep-in-mind
   background-color: #404040;
 }
 
-#nav h2 {
+#home h2 {
   color: #E6E6E6;
   margin: 10px;
 }
 
-#nav ul {
+#home ul {
   list-style-type: none;
   padding: 0;
   background-color: #E6E6E6;
@@ -140,21 +159,39 @@ https://vue-loader.vuejs.org/guide/scoped-css.html#also-keep-in-mind
   padding-bottom: 1px;
 }
 
-#nav li {
+#home li {
   border-top: 2px solid darkgray;
 }
 
-#nav .postLink {
+#home .postLink {
   margin: 10px;
   overflow: hidden;
 }
 
-#nav .postTitle {
+#home .postTitle {
   float: left;
 }
 
-#nav .postDate {
+#home .postDate {
   float: right;
   color: #404040;
+}
+
+footer {
+  background-color: lightgray;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+footer > p {
+  float: left;
+  margin: 0;
+}
+
+footer > a {
+  float: right;
 }
 </style>
