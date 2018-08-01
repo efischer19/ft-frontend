@@ -124,7 +124,7 @@ https://vue-loader.vuejs.org/guide/scoped-css.html#also-keep-in-mind
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 30px  
+  padding-bottom: 30px
 }
 
 #home h1 {

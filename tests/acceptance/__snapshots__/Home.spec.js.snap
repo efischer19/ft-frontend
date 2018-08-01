@@ -1,69 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home should match snapshot 1`] = `
-<div id="nav">
-  <div id="signin-header">
-    <p>You are not signed in</p>
-    <a href="https://signin.fischerthings.com/login?response_type=token&amp;client_id=6a8t6a9st8fqkbt81n9mtb2aag&amp;redirect_uri=https://fischerthings.com/login_success.html">Sign In</a>
-  </div>
-  <h1>Fischer Things</h1>
-  <section>
-    <h2 class="topic">Cooking</h2>
-    <ul>
-      <li>
-        <a href="#/posts/mc">
-          <div class="postLink">
-            <p class="postTitle">Mac and Cheese</p>
-            <p class="postDate">Jul 24</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#/posts/mc2">
-          <div class="postLink">
-            <p class="postTitle">Not Mac and Cheese</p>
-            <p class="postDate">Jul 24</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#/posts/mc3">
-          <div class="postLink">
-            <p class="postTitle">Just Cheese</p>
-            <p class="postDate">Jul 24</p>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <section>
-    <h2 class="topic">Baby Pictures</h2>
-    <ul>
-      <li>
-        <a href="#/posts/mc4">
-          <div class="postLink">
-            <p class="postTitle">Baby Mac</p>
-            <p class="postDate">Jul 24</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#/posts/mc5">
-          <div class="postLink">
-            <p class="postTitle">Baby Cheese</p>
-            <p class="postDate">Jul 24</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#/posts/mc6">
-          <div class="postLink">
-            <p class="postTitle">Smol Noodlins</p>
-            <p class="postDate">Jul 24</p>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </section>
+<div id="home">
+  <nav>
+    <div id="signin-header">
+      <p>You are not signed in</p>
+      <a href="https://signin.fischerthings.com/login?response_type=token&amp;client_id=6a8t6a9st8fqkbt81n9mtb2aag&amp;redirect_uri=https://fischerthings.com/login_success.html">Sign In</a>
+    </div>
+  </nav>
+  <header>
+    <h1>Fischer Things</h1>
+  </header>
+  <main>
+    <section>
+      <h2 class="topic">Cooking</h2>
+      <ul>
+        <li>
+          <a href="#/posts/mc">
+            <div class="postLink">
+              <p class="postTitle">Mac and Cheese</p>
+              <p class="postDate">Jul 24</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#/posts/mc2">
+            <div class="postLink">
+              <p class="postTitle">Not Mac and Cheese</p>
+              <p class="postDate">Jul 24</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#/posts/mc3">
+            <div class="postLink">
+              <p class="postTitle">Just Cheese</p>
+              <p class="postDate">Jul 24</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2 class="topic">Baby Pictures</h2>
+      <ul>
+        <li>
+          <a href="#/posts/mc4">
+            <div class="postLink">
+              <p class="postTitle">Baby Mac</p>
+              <p class="postDate">Jul 24</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#/posts/mc5">
+            <div class="postLink">
+              <p class="postTitle">Baby Cheese</p>
+              <p class="postDate">Jul 24</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#/posts/mc6">
+            <div class="postLink">
+              <p class="postTitle">Smol Noodlins</p>
+              <p class="postDate">Jul 24</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>© Eric Fischer 2018</p>
+    <a href="#/posts/faq">FAQ</a>
+  </footer>
 </div>
 `;
