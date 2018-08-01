@@ -1,7 +1,8 @@
 {
   "name": "ft-frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "rm -rf dist && npx webpack",
@@ -29,10 +30,8 @@
     "html-webpack-plugin": "^3.2.0",
     "jest-localstorage-mock": "^2.2.0",
     "jest-mock-axios": "^2.1.11",
-    "lint-staged": "^6.0.0",
     "mini-css-extract-plugin": "^0.4.1",
     "preload-webpack-plugin": "^3.0.0-beta.1",
-    "uglifyjs-webpack-plugin": "^1.2.7",
     "vue-loader": "^15.2.4",
     "vue-server-renderer": "^2.5.16",
     "vue-style-loader": "^4.1.0",
@@ -44,18 +43,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  }
+  ]
 }

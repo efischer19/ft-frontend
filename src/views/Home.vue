@@ -63,7 +63,7 @@ export default {
     };
 
     const visibilities = ['public'];
-    if (authToken) { visibilities.push('private'); }
+    if (authToken) { visibilities.unshift('private'); }
 
     // eslint-disable-next-line no-restricted-syntax
     for (const visibility of visibilities) {
