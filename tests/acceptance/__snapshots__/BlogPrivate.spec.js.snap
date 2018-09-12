@@ -28,5 +28,15 @@ exports[`Blog should match snapshot for private post 1`] = `
       <img src="/api/public/mc/20180519_mc_bowl_shot_1.small.jpg" alt="2 finished bowls of mac and cheese, ready to eat">
       <div class="hidden">Click for high-resolution image</div>
     </a>
+    <div class="video-with-link">
+      <div class="div-around-video">
+        <video width="auto" height="auto" controls="controls">
+          <source src="/api/public/mc/20180912_test_video.small.mp4">
+        </video>
+      </div>
+      <a href="/api/public/mc/20180912_test_video.mp4">
+        Click here for a higher-resolution version of this video
+      </a>
+    </div>
 </div>
 `;

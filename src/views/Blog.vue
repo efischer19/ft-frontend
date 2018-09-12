@@ -19,6 +19,12 @@
         :alt-text="element.alt"
         :key="element.index"
       />
+      <BlogVideo
+        v-else-if="element.type === 'video'"
+        :file-links="element.signed || {'public': element.link}"
+        :post-id="id"
+        :key="element.index"
+      />
       <BlogHeader
         v-else-if="element.type === 'header'"
         :msg="element.msg"
@@ -39,6 +45,7 @@ import axios from 'axios';
 import { getCachedData, setCachedData } from '@/util/expiring-session-cache';
 import BlogHeader from '@/components/BlogHeader.vue';
 import BlogImg from '@/components/BlogImg.vue';
+import BlogVideo from '@/components/BlogVideo.vue';
 import BlogList from '@/components/BlogList.vue';
 import BlogP from '@/components/BlogP.vue';
 import BlogTitle from '@/components/BlogTitle.vue';
@@ -50,6 +57,7 @@ export default {
     BlogTitle,
     BlogP,
     BlogImg,
+    BlogVideo,
     BlogHeader,
     BlogList,
   },

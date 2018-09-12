@@ -50,5 +50,10 @@
     "type": "img",
     "link": "20180519_mc_bowl_shot_1.jpg",
     "alt": "2 finished bowls of mac and cheese, ready to eat"
+  },
+  {
+    "index": 7,
+    "type": "video",
+    "link": "20180912_test_video.mp4"
   }
 ]
