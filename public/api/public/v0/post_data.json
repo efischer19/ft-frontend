@@ -1,0 +1,12 @@
+[
+  {
+    "index": 0,
+    "type": "title",
+    "msg": "Video testing ground"
+  },
+  {
+    "index": 1,
+    "type": "video",
+    "link": "first_selfie_vid.mp4"
+  }
+]
