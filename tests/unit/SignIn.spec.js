@@ -17,7 +17,7 @@ describe('SignIn.vue', () => {
 
     const signout = wrapper.find('a');
     signout.trigger('click');
-    expect(sessionStorage.__STORE__).toEqual({}); // eslint-disable-line no-underscore-dangle
+    expect(sessionStorage.__STORE__).toEqual(undefined); // eslint-disable-line no-underscore-dangle
     sessionStorage.clear();
   });
 

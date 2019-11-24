@@ -30,6 +30,8 @@ module.exports = {
     '!coverage/**',
     '!src/main.js',
     '!doc/**',
+    '!.*',
+    '!**/.*',
   ],
   coverageThreshold: {
     global: {
